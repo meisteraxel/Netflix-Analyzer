@@ -4,7 +4,6 @@ import pandas as pd
 import tkinter
 from tkinter import filedialog
 import customtkinter
-import time
 
 
 #Set CTK Window
@@ -23,7 +22,7 @@ def filepath():
 
 #Calculate Sum of watched Netlix Shows
 def netflixsum():
-    global output
+    global output_text, csv
     df = pd.read_csv(csv)
 
     df= df.drop(["Profile Name", "Attributes", "Supplemental Video Type", "Device Type", "Bookmark", "Latest Bookmark", "Country"], axis=1)
@@ -38,7 +37,8 @@ def netflixsum():
     shows = df[df["Title"].str.contains("", regex=False)]
     shows = shows[(shows["Duration"] > "0 days 00:01:00")]
 
-    print(shows["Duration"].sum())
+    sum_duration = shows["Duration"].sum()
+    output_text.insert(customtkinter.END, str(sum_duration))
     
   
 #Define Buttons/Labels
@@ -50,5 +50,8 @@ csv_button.grid(row=1, column=0, padx=20, pady=10)
 
 sum_button = customtkinter.CTkButton(app, text="Calculate Sum of watched Netflix Shows", command=netflixsum)
 sum_button.grid(row=2, column=0, padx=20, pady=20)
+
+output_text = customtkinter.CTkTextbox(app, height=5, width=115)
+output_text.grid(row=3, column=0, padx=20, pady=10)
 
 app.mainloop()
