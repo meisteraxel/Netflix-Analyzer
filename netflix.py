@@ -4,12 +4,13 @@ import pandas as pd
 import tkinter
 from tkinter import filedialog
 import customtkinter
+from tkinter import font
 
 
 #Set CTK Window
 customtkinter.set_appearance_mode("System")
 app = customtkinter.CTk()
-app.geometry("500x300")
+app.geometry("800x400")
 app.title("Netflix-Analyzer")
 app.grid_columnconfigure(0, weight=1)
 
@@ -42,16 +43,21 @@ def netflixsum():
     
   
 #Define Buttons/Labels
-label = customtkinter.CTkLabel(app, text="Calculate the Sum of your watched Netflix Shows/Movies", fg_color="transparent")
+label_font = customtkinter.CTkFont(family="Helvetica", size=22, weight="bold")
+button_font = customtkinter.CTkFont(family="Helvetica", size=18)
+text_font = customtkinter.CTkFont(family="Helvetica", size=18)
+
+
+label = customtkinter.CTkLabel(app, text="Calculate the Sum of your watched Netflix Shows/Movies", fg_color="transparent", font=label_font)
 label.grid(row=0, column=0, padx=20, pady=20)
 
-csv_button = customtkinter.CTkButton(app, text="Select your Viewing Activity.csv File", command=filepath)
-csv_button.grid(row=1, column=0, padx=20, pady=10)
+csv_button = customtkinter.CTkButton(app, text="Select your Viewing Activity.csv File", command=filepath, font=button_font)
+csv_button.grid(row=1, column=0, padx=20, pady=20)
 
-sum_button = customtkinter.CTkButton(app, text="Calculate Sum of watched Netflix Shows", command=netflixsum)
+sum_button = customtkinter.CTkButton(app, text="Calculate Sum of watched Netflix Shows", command=netflixsum, font=button_font)
 sum_button.grid(row=2, column=0, padx=20, pady=20)
 
-output_text = customtkinter.CTkTextbox(app, height=5, width=115)
+output_text = customtkinter.CTkTextbox(app, height=5, width=160, font=text_font)
 output_text.grid(row=3, column=0, padx=20, pady=30)
 
 app.mainloop()
