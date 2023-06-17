@@ -52,6 +52,6 @@ sum_button = customtkinter.CTkButton(app, text="Calculate Sum of watched Netflix
 sum_button.grid(row=2, column=0, padx=20, pady=20)
 
 output_text = customtkinter.CTkTextbox(app, height=5, width=115)
-output_text.grid(row=3, column=0, padx=20, pady=10)
+output_text.grid(row=3, column=0, padx=20, pady=30)
 
 app.mainloop()
