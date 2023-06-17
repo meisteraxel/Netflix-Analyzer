@@ -39,7 +39,6 @@ def netflixsum():
     shows = shows[(shows["Duration"] > "0 days 00:01:00")]
 
     print(shows["Duration"].sum())
-    time.sleep(10)
     
   
 #Define Buttons/Labels
